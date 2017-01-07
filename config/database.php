@@ -4,7 +4,7 @@ return [
     "mysql" => [
         'driver' => 'mysql',
         'host' => 'localhost',
-        'database' => 'fcpg',
+        'database' => 'test',
         'username' => 'entsafe',
         'password' => 'entsafe',
         'charset' => 'utf8',
