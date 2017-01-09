@@ -21,13 +21,20 @@ trait Factory{
     public static $obj;
     
     public static function singleton(){
-        if(!self::$obj){
+        if (!self::$obj) {
+            if (func_num_args()) {
+                return self::$obj = new static(...func_get_args());
+            }
             return self::$obj = new static();
         }
         return self::$obj;
     }
     
-    public static function factory(){
-        return new static();
+    public static function factory() {
+        if (func_num_args()) {
+            return self::$obj = new static(...func_get_args());
+        }
+        return self::$obj = new static();
     }
+
 }

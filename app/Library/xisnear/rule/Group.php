@@ -11,11 +11,11 @@
 namespace Xisnear\Rule;
 
 /**
- * Rule
+ * Group
  * 
  * @author pvol <pvol@163.com>
  */
-class Rule
+class Group
 {
     /** @var rule list */
     private $rules;
@@ -41,19 +41,6 @@ class Rule
             }
         }
         return true;
-    }
-    
-    /**
-     * enforce one rule
-     */
-    public function enforceOne($rule_key){
-        $rule = $this->rules[$rule_key];
-        $object = new $rule['fact'];
-        if($object->$rule['compare']($rule['expect']) === true){
-            return true;
-        } else {
-            return false;
-        }
     }
 
 }

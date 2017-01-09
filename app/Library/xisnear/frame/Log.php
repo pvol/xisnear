@@ -29,7 +29,7 @@ class Log {
     /**
      * init log
      */
-    public function init() {
+    public function __construct() {
         $this->logger = new Logger('system');
         
         $this->file_path = _storage_path() . '/logs/'.date("Y-m-d").'/system_' . date("Y-m-d") . '.log';

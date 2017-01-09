@@ -28,7 +28,7 @@ class Whoops {
     
     const TYPE_CONSOLE = 'PlainTextHandler';
 
-    public function init($type = self::TYPE_PAGE) {
+    public function __construct($type = self::TYPE_PAGE) {
         $whoops = new \Whoops\Run;
 
         $handler_name = '\Whoops\Handler\\' . $type;
