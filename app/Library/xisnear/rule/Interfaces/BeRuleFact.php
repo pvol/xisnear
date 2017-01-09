@@ -8,7 +8,7 @@
  * @author pvol <pvol@163.com>
  */
 
-namespace Xisnear\Rule;
+namespace Xisnear\Rule\Interfaces;
 
 /**
  * Be Rule Fact

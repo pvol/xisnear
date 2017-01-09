@@ -29,10 +29,10 @@ class Log {
     /**
      * init log
      */
-    public function __construct() {
-        $this->logger = new Logger('system');
+    public function init($name = 'system') {
+        $this->logger = new Logger($name);
         
-        $this->file_path = _storage_path() . '/logs/'.date("Y-m-d").'/system_' . date("Y-m-d") . '.log';
+        $this->file_path = _storage_path() . '/logs/' . date("Y-m-d") . '/' . $name . '_' . date("Y-m-d") . '.log';
         
         $this->logger->pushHandler(new StreamHandler($this->file_path));
     }

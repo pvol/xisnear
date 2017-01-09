@@ -18,7 +18,7 @@ namespace App\Http\Controllers;
 class TestController extends Controller
 {
     public function test(){
-        $data = _con2fig('database.mysql.driver');
+        $data = _config('database.mysql.driver');
 //        $da = Test::find(1);
 //        _dd($data, $da, _app()->route->uniq);
         _log()->info('111');

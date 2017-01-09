@@ -18,21 +18,21 @@ Dotenv::load(__DIR__.'/../');
 | add whoops
 |--------------------------------------------------------------------------
 */
-Xisnear\Frame\Whoops::singleton(\Xisnear\Frame\Whoops::TYPE_JSON);
+Xisnear\Frame\Whoops::singleton()->init(\Xisnear\Frame\Whoops::TYPE_JSON);
 
 /*
 |--------------------------------------------------------------------------
 | add eloquent db orm
 |--------------------------------------------------------------------------
 */
-Xisnear\Frame\Eloquent::singleton();
+Xisnear\Frame\Eloquent::singleton()->init();
 
 /*
 |--------------------------------------------------------------------------
 | add monolog
 |--------------------------------------------------------------------------
 */
-Xisnear\Frame\Log::singleton();
+Xisnear\Frame\Log::singleton()->init();
 
 /*
 |--------------------------------------------------------------------------

@@ -27,8 +27,8 @@ class Whoops {
     const TYPE_JSON = 'JsonResponseHandler';
     
     const TYPE_CONSOLE = 'PlainTextHandler';
-
-    public function __construct($type = self::TYPE_PAGE) {
+    
+    public function init($type = self::TYPE_PAGE) {
         $whoops = new \Whoops\Run;
 
         $handler_name = '\Whoops\Handler\\' . $type;

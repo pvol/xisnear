@@ -23,8 +23,8 @@ class Eloquent {
     
     use Factory;
 
-    public function __construct() {
-        $database = _config('database.mysql');
+    public function init($config_path = 'database.mysql') {
+        $database = _config($config_path);
         
         $db = new DB();
 
