@@ -5,7 +5,7 @@
  * 
  * @version 1.0
  * @package App\Http\Controllers
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace App\Http\Controllers;
@@ -13,7 +13,7 @@ namespace App\Http\Controllers;
 /**
  * class test controller
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class TestController extends Controller
 {

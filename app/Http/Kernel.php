@@ -6,7 +6,7 @@
  * @version 1.0
  * @package App
  * @ignore
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace App\Http;
@@ -14,7 +14,7 @@ namespace App\Http;
 /**
  * class for config kernel
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class Kernel
 {

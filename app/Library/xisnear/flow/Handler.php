@@ -5,7 +5,7 @@
  * 
  * @version 1.0
  * @package Flow
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace Xisnear\Flow;
@@ -13,7 +13,7 @@ namespace Xisnear\Flow;
 /**
  * Handler base
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class Handler
 {

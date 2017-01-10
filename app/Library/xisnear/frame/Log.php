@@ -6,7 +6,7 @@
  * @version 1.0
  * @package Frame
  * @ignore
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace Xisnear\Frame;
@@ -18,7 +18,7 @@ use Monolog\Handler\StreamHandler;
 /**
  * class
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class Log {
 

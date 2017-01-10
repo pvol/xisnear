@@ -6,7 +6,7 @@
  * @version 1.0
  * @package Frame
  * @ignore
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace Xisnear\Frame;
@@ -16,7 +16,7 @@ use Xisnear\Frame\Traits\Factory;
 /**
  * class App
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class App{
     

@@ -5,7 +5,7 @@
  * 
  * @version 1.0
  * @package Rule
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace Xisnear\Rule\Fact;
@@ -15,7 +15,7 @@ use Xisnear\Rule\Exception\RuleException;
 /**
  * Rule Fact
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class ObjectFact extends BaseFact{
     
