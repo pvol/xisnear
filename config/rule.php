@@ -6,9 +6,12 @@ return [
             'rule1', 'rule2', 'rule3'
         ],
     ],
+    'fact' => [
+        'user' => 'App\Modules\Rules\User',
+    ],
     'rules' => [
-        'rule1' => ['fact' => 'User', 'compare' => '=', 'expect' => '{name:"test"}'],
-        'rule2' => ['fact' => 'User', 'compare' => '>', 'expect' => '{age:"20"}'],
-        'rule3' => ['fact' => 'User', 'compare' => '<', 'expect' => '{contry:"中国"}'],
+        'rule1' => ['fact' => 'user', 'compare' => '=', 'expect' => '{name:"test"}'],
+        'rule2' => ['fact' => 'user', 'compare' => '>', 'expect' => '{age:"20"}'],
+        'rule3' => ['fact' => 'user', 'compare' => '<', 'expect' => '{contry:"中国"}'],
     ]
 ];

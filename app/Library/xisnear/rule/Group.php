@@ -10,6 +10,9 @@
 
 namespace Xisnear\Rule;
 
+use Xisnear\Frame\Traits\Factory;
+use Xisnear\Rule\Exception\RuleException;
+
 /**
  * Group
  * 
@@ -17,6 +20,9 @@ namespace Xisnear\Rule;
  */
 class Group
 {
+    
+    use Factory;
+    
     /** @var rule group list */
     private $groups;
     
@@ -49,7 +55,7 @@ class Group
     public function enforceOne($group_key){
         $rule_keys = $this->groups[$group_key];
         if(!count($rule_keys)){
-            throw new Exception("rule group config error:no rules");
+            throw new RuleException("rule group config error:no rules");
         }
         $rule = new \Xisnear\Rule\Rule();
         return $rule->enforce($rule_keys);
