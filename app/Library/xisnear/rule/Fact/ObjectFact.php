@@ -10,6 +10,8 @@
 
 namespace Xisnear\Rule\Fact;
 
+use Xisnear\Rule\Exception\RuleException;
+
 /**
  * Rule Fact
  * 
@@ -27,7 +29,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if($fact[$attribute] !== $expect_ary[$attribute]){
                 return false;
@@ -46,7 +48,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if($fact[$attribute] !== $expect_ary[$attribute]){
                 return true;
@@ -65,7 +67,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if($fact[$attribute] >= $expect_ary[$attribute]){
                 return false;
@@ -84,7 +86,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if($fact[$attribute] > $expect_ary[$attribute]){
                 return false;
@@ -103,7 +105,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if($fact[$attribute] <= $expect_ary[$attribute]){
                 return false;
@@ -122,7 +124,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if($fact[$attribute] < $expect_ary[$attribute]){
                 return false;
@@ -141,7 +143,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if(strpos($fact[$attribute], $expect_ary[$attribute]) === false){
                 return false;
@@ -160,7 +162,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if(strpos($fact[$attribute], $expect_ary[$attribute]) === false){
                 return true;
@@ -179,7 +181,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if(!preg_match($expect_ary[$attribute], $fact[$attribute])){
                 return false;
@@ -198,7 +200,7 @@ class ObjectFact extends BaseFact{
         $fact = (array)$this->fact;
         foreach($expect_ary as $attribute){
             if(!isset($fact[$attribute])){
-                throw new \Exception("rule expect error:no attribute " . $attribute);
+                throw new RuleException("rule expect error:no attribute " . $attribute);
             }
             if(!preg_match($expect_ary[$attribute], $fact[$attribute])){
                 return true;
