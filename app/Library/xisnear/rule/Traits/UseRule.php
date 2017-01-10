@@ -4,7 +4,7 @@
  * xisnear
  * 
  * @version 1.0
- * @package App\Traits
+ * @package Rule
  * @ignore
  * @author xisnear <service@xisnear.com>
  */
