@@ -11,6 +11,7 @@
 namespace Xisnear\Rule;
 
 use Xisnear\Frame\Traits\Factory;
+use Xisnear\Rule\Exception\RuleException;
 
 /**
  * Rule
@@ -97,7 +98,7 @@ class Rule
     public function enforceOne($rule_key){
         $rule = $this->rules[$rule_key];
         if(!isset($rule['fact']) || !isset($rule['compare']) || !isset($rule['expect'])){
-            throw new Exception("rule config error:" . $rule_key);
+            throw new RuleException("rule config error:" . $rule_key);
         }
         
         // new class

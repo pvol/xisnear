@@ -12,9 +12,10 @@
 namespace Xisnear\Rule\Traits;
 
 /**
- * trait WithRule
+ * trait use rule
  * 
- * used in model
+ * import this trait and run useRule function,
+ * the object of model will auto added to fact instance.
  * 
  * @author xisnear <service@xisnear.com>
  */
