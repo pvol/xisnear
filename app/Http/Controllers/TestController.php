@@ -18,10 +18,13 @@ namespace App\Http\Controllers;
 class TestController extends Controller
 {
     public function test(){
-        $data = _config('database.mysql.driver');
-//        $da = Test::find(1);
-//        _dd($data, $da, _app()->route->uniq);
-        _log()->info('111');
-        _view('test', 'aaaaaa');
+        
+    }
+    
+    public function ruleTest(){
+        $user = \App\Models\User::find(1);
+        $user->useRule();
+        $rule = \Xisnear\Rule\Rule::singleton();
+        $rule->enforce('rule1');
     }
 }

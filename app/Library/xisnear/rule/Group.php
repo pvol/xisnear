@@ -10,6 +10,8 @@
 
 namespace Xisnear\Rule;
 
+use Xisnear\Frame\Traits\Factory;
+
 /**
  * Group
  * 
@@ -17,6 +19,9 @@ namespace Xisnear\Rule;
  */
 class Group
 {
+    
+    use Factory;
+    
     /** @var rule group list */
     private $groups;
     
