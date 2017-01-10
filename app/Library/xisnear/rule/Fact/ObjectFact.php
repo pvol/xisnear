@@ -23,7 +23,17 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function equalTo($expect){
-        return $this->fact === $expect ? true : false;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if($fact[$attribute] !== $expect_ary[$attribute]){
+                return false;
+            }
+        }
+        return true;
     }
     
     /**
@@ -32,7 +42,17 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function notEqualTo($expect){
-        return $this->fact !== $expect ? true : false;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if($fact[$attribute] !== $expect_ary[$attribute]){
+                return true;
+            }
+        }
+        return false;
     }
     
     /**
@@ -41,7 +61,17 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function lessThan($expect){
-        return $this->fact < $expect ? true : false;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if($fact[$attribute] >= $expect_ary[$attribute]){
+                return false;
+            }
+        }
+        return true;
     }
     
     /**
@@ -50,7 +80,17 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function equalAndLessThan($expect){
-        return $this->fact <= $expect ? true : false;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if($fact[$attribute] > $expect_ary[$attribute]){
+                return false;
+            }
+        }
+        return true;
     }
     
     /**
@@ -59,7 +99,17 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function greaterThan($expect){
-        return $this->fact > $expect ? true : false;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if($fact[$attribute] <= $expect_ary[$attribute]){
+                return false;
+            }
+        }
+        return true;
     }
     
     /**
@@ -68,7 +118,17 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function equalAndGreaterThan($expect){
-        return $this->fact >= $expect ? true : false;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if($fact[$attribute] < $expect_ary[$attribute]){
+                return false;
+            }
+        }
+        return true;
     }
     
     /**
@@ -77,7 +137,17 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function contain($expect){
-        return strpos($this->fact, $expect) !== false  ? true : false;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if(strpos($fact[$attribute], $expect_ary[$attribute]) === false){
+                return false;
+            }
+        }
+        return true;
     }
     
     /**
@@ -86,7 +156,17 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function notContain($expect){
-        return strpos($this->fact, $expect) === false  ? true : false;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if(strpos($fact[$attribute], $expect_ary[$attribute]) === false){
+                return true;
+            }
+        }
+        return false;
     }
     
     /**
@@ -95,10 +175,17 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function like($expect){
-        if(preg_match($expect, $this->fact)){
-            return true;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if(!preg_match($expect_ary[$attribute], $fact[$attribute])){
+                return false;
+            }
         }
-        return false;
+        return true;
     }
     
     /**
@@ -107,8 +194,15 @@ class ObjectFact extends BaseFact{
      * @param json $expect
      */
     public function notLike($expect){
-        if(!preg_match($expect, $this->fact)){
-            return true;
+        $expect_ary = json_decode($expect, true);
+        $fact = (array)$this->fact;
+        foreach($expect_ary as $attribute){
+            if(!isset($fact[$attribute])){
+                throw new \Exception("rule expect error:no attribute " . $attribute);
+            }
+            if(!preg_match($expect_ary[$attribute], $fact[$attribute])){
+                return true;
+            }
         }
         return false;
     }
