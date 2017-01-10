@@ -23,7 +23,7 @@ class Rule
     /**
      * init rule
      */
-    public function __construct($rule_path = 'rule'){
+    public function __construct($rule_path = 'rule.rules'){
         $this->rules = _config($rule_path);
     }
     
@@ -48,6 +48,9 @@ class Rule
      */
     public function enforceOne($rule_key){
         $rule = $this->rules[$rule_key];
+        if(!isset($rule['fact']) || !isset($rule['compare']) || !isset($rule['expect'])){
+            throw new Exception("rule config error:" . $rule_key);
+        }
         $object = new $rule['fact'];
         if($object->$rule['compare']($rule['expect']) === true){
             return true;

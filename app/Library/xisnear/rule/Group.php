@@ -17,30 +17,42 @@ namespace Xisnear\Rule;
  */
 class Group
 {
-    /** @var rule list */
-    private $rules;
+    /** @var rule group list */
+    private $groups;
     
     /**
      * init rule
      */
-    public function __construct($rule_path = 'rule'){
-        $this->rules = _config($rule_path);
+    public function __construct($group_path = 'rule.groups'){
+        $this->groups = _config($group_path);
     }
     
     /**
      * enforce rules
      */
-    public function enforce($rule_keys){
-        if(is_string($rule_keys)){
-            $rule_keys = explode(',', $rule_keys);
+    public function enforce($group_keys){
+        if(is_string($group_keys)){
+            $group_keys = explode(',', $group_keys);
         }
-        foreach($rule_keys as $rule_key){
+        foreach($group_keys as $group_key){
             // return false when any of the rules failed
-            if($this->enforceOne($rule_key) !== true){
+            if($this->enforceOne($group_key) !== true){
                 return false;
             }
         }
         return true;
+    }
+    
+    /**
+     * enforce one rule
+     */
+    public function enforceOne($group_key){
+        $rule_keys = $this->groups[$group_key];
+        if(!count($rule_keys)){
+            throw new Exception("rule group config error:no rules");
+        }
+        $rule = new \Xisnear\Rule\Rule();
+        return $rule->enforce($rule_keys);
     }
 
 }
