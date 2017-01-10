@@ -6,7 +6,7 @@
  * @version 1.0
  * @package App\Http\Controllers
  * @ignore
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace App\Http\Controllers;
@@ -14,7 +14,7 @@ namespace App\Http\Controllers;
 /**
  * base controller
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class Controller
 {

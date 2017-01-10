@@ -5,7 +5,7 @@
  * 
  * @version 1.0
  * @package App\Http\Controllers
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace App\Modules\Rules;
@@ -15,7 +15,7 @@ use Xisnear\Rule\Fact\ObjectFact;
 /**
  * user role fact
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class User extends ObjectFact
 {

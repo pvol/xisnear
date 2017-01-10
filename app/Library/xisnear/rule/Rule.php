@@ -5,7 +5,7 @@
  * 
  * @version 1.0
  * @package Rule
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace Xisnear\Rule;
@@ -15,7 +15,7 @@ use Xisnear\Frame\Traits\Factory;
 /**
  * Rule
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class Rule
 {

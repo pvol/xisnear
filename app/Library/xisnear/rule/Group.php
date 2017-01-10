@@ -5,7 +5,7 @@
  * 
  * @version 1.0
  * @package Rule
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace Xisnear\Rule;
@@ -16,7 +16,7 @@ use Xisnear\Rule\Exception\RuleException;
 /**
  * Group
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class Group
 {

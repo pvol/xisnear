@@ -5,7 +5,7 @@
  * 
  * @version 1.0
  * @package Rule
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace Xisnear\Rule\Fact;
@@ -15,7 +15,7 @@ use Xisnear\Frame\Traits\Factory;
 /**
  * Rule Fact
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 abstract class BaseFact {
     

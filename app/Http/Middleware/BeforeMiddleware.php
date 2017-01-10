@@ -6,7 +6,7 @@
  * @version 1.0
  * @package App
  * @ignore
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace App\Http\Middleware;
@@ -14,7 +14,7 @@ namespace App\Http\Middleware;
 /**
  * class before middleware
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 class BeforeMiddleware {
 

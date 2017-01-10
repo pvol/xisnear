@@ -4,9 +4,9 @@
  * xisnear
  * 
  * @version 1.0
- * @package App\Traits
+ * @package Rule
  * @ignore
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 namespace Xisnear\Rule\Traits;
@@ -16,7 +16,7 @@ namespace Xisnear\Rule\Traits;
  * 
  * used in model
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 trait UseRule{
     

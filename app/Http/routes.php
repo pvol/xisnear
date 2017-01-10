@@ -6,7 +6,7 @@
  * @version 1.0
  * @package App
  * @ignore
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 use Xisnear\Frame\Route;
@@ -14,7 +14,7 @@ use Xisnear\Frame\Route;
 /**
  * route config file
  * 
- * @author pvol <pvol@163.com>
+ * @author xisnear <service@xisnear.com>
  */
 
 Route::group([
