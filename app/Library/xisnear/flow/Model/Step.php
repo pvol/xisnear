@@ -10,12 +10,14 @@
 
 namespace Xisnear\Flow;
 
+use  Illuminate\Database\Eloquent\Model  as Eloquent; 
+
 /**
- * Step
+ * Flow
  * 
  * @author xisnear <service@xisnear.com>
  */
-class Step
+class Step extends Eloquent
 {
-    
+    protected $table = 'x_steps';
 }
