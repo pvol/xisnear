@@ -40,6 +40,12 @@ class Route{
     /** @var request method post */
     const METHOD_POST = 'POST';
     
+    /** @var dispatch by route config */
+    const DISPATCH_BY_ROUTE_CONFIG = 1;
+    
+    /** @var dispatch by common practice */
+    const DISPATCH_BY_COMMON_PRACTICE = 2;
+    
     public function __construct() {
         $this->uri = filter_input(INPUT_SERVER, 'REQUEST_URI');
         $this->uniq = filter_input(INPUT_SERVER, 'UNIQUE_ID');
@@ -48,9 +54,25 @@ class Route{
     }
     
     /**
-     * dispatch to controller action
+     * dispatch to controller
      */
-    public function dispatch(){
+    public function dispatch($type = self::DISPATCH_BY_ROUTE_CONFIG){
+        switch($type){
+            case self::DISPATCH_BY_ROUTE_CONFIG:
+                return $this->dispatchByRouteConfig();
+                break;
+            case self::DISPATCH_BY_COMMON_PRACTICE:
+                return $this->dispatchByCommonPractice();
+                break;
+            default:
+                break;
+        }
+    }
+    
+    /**
+     * dispatch to controller by route config 
+     */
+    public function dispatchByRouteConfig(){
         foreach ($this->queue[$this->method] as $alias => $paths) {
             if (!\App\Library\Str::startsWith($this->uri, $alias)) {
                 continue;
@@ -77,6 +99,13 @@ class Route{
         }
     }
 
+    /**
+     * dispatch to controller by common practice
+     */
+    public function dispatchByCommonPractice(){
+        
+    }
+    
     /**
      * add new route
      */

@@ -32,12 +32,14 @@ class App{
     }
     
     public function run(){
-        if(!$this->route->dispatch()){
+        if(!$this->route->dispatch(Route::DISPATCH_BY_ROUTE_CONFIG)){
             abort();
         }    
     }
     
     public function exec(){
-        // todo
+        if(!$this->route->dispatch(Route::DISPATCH_BY_COMMON_PRACTICE)){
+            abort();
+        }    
     }
 }

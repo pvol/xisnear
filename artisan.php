@@ -7,7 +7,7 @@ error_reporting(E_ALL^E_NOTICE^E_WARNING^E_DEPRECATED);
 | Create The Application
 |--------------------------------------------------------------------------
 */
-$app = require __DIR__.'/../bootstrap/app.php';
+$app = require __DIR__.'/../bootstrap/cmd.php';
 
 /*
 |--------------------------------------------------------------------------
