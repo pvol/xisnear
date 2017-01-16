@@ -12,6 +12,7 @@
 namespace Xisnear\Frame;
 
 use Xisnear\Frame\Traits\Factory;
+use Xisnear\Frame\Exception\FrameException;
 
 /**
  * class
@@ -103,7 +104,22 @@ class Route{
      * dispatch to controller by common practice
      */
     public function dispatchByCommonPractice(){
-        
+        global $argv;
+        $this->uri = $argv[1];
+        $this->uniq = uniqid();
+        $kernel = new \App\Console\Kernel();
+        $commands = $kernel->getCommands();
+        // check if command in kernel
+        if(!array_key_exists($this->uri, $commands)){
+            throw new FrameException("Command not support, please config the command in Console\Kernel.php.");
+        }
+        // check if extends from base command
+        if(!is_subclass_of($commands[$this->uri], Abstracts\Command::class)){
+            throw new FrameException("Command not support, command must be subclass of Xisnear\Frame\Abstracts\Command.");
+        }
+        $command_obj = new $commands[$this->uri]();
+        $command_obj->handle();
+        return true;
     }
     
     /**

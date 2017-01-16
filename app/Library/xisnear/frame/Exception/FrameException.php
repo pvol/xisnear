@@ -8,14 +8,14 @@
  * @author xisnear <service@xisnear.com>
  */
 
-namespace Xisnear\Flow\Exception;
+namespace Xisnear\Frame\Exception;
 
 /**
  * ErrorException
  * 
  * @author xisnear <service@xisnear.com>
  */
-class FrameException extends \ErrorException
+class FrameException extends \Exception
 {
 
 }
