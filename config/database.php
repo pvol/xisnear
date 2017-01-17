@@ -4,7 +4,7 @@ return [
     "mysql" => [
         'driver' => 'mysql',
         'host' => 'localhost',
-        'database' => 'test',
+        'database' => 'xisnear',
         'username' => 'entsafe',
         'password' => 'entsafe',
         'charset' => 'utf8',

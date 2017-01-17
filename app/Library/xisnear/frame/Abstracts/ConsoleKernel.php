@@ -4,7 +4,7 @@
  * xisnear
  * 
  * @version 1.0
- * @package Xisnear\Frame
+ * @package Frame
  * @author xisnear <service@xisnear.com>
  */
 

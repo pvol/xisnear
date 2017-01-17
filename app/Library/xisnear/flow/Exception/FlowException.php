@@ -15,7 +15,7 @@ namespace Xisnear\Flow\Exception;
  * 
  * @author xisnear <service@xisnear.com>
  */
-class FlowException extends \ErrorException
+class FlowException extends \Exception
 {
 
 }

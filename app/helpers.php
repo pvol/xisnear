@@ -103,6 +103,17 @@ if(! function_exists('_app_path')){
 }
 
 /**
+ * get core path
+ * 
+ * usage: _core_path()
+ */
+if(! function_exists('_core_path')){
+    function _core_path(){
+        return __DIR__ . '/Library/xisnear/';
+    }
+}
+
+/**
  * get storage path
  * 
  * usage: _storage_path()

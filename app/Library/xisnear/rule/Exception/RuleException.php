@@ -15,7 +15,7 @@ namespace Xisnear\Rule\Exception;
  * 
  * @author xisnear <service@xisnear.com>
  */
-class RuleException extends \ErrorException
+class RuleException extends \Exception
 {
 
 }
