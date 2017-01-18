@@ -3,7 +3,7 @@
 use Xisnear\Frame\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class TemplateTable extends Migration{
+class GroupTable extends Migration{
 
     /**
      * Run the migrations.
@@ -11,11 +11,10 @@ class TemplateTable extends Migration{
      * @return void
      */
     public function up() {
-        $this->table('x_flow_templates', function(Blueprint $table) {
+        $this->table('x_rule_groups', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
-            $table->string('title')->comment('title');
-            $table->string('rules')->comment('rules');
+            $table->string('rules', 255);
             $table->timestamps();
             $table->softDeletes();
         });

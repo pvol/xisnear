@@ -3,7 +3,7 @@
 use Xisnear\Frame\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class TemplateTable extends Migration{
+class RuleTable extends Migration{
 
     /**
      * Run the migrations.
@@ -11,11 +11,12 @@ class TemplateTable extends Migration{
      * @return void
      */
     public function up() {
-        $this->table('x_flow_templates', function(Blueprint $table) {
+        $this->table('x_rules', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
-            $table->string('title')->comment('title');
-            $table->string('rules')->comment('rules');
+            $table->string('fact', 255);
+            $table->string('compare', 50);
+            $table->string('expect', 255);
             $table->timestamps();
             $table->softDeletes();
         });

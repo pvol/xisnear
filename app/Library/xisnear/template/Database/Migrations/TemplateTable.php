@@ -11,13 +11,10 @@ class TemplateTable extends Migration{
      * @return void
      */
     public function up() {
-        $this->table('x_flow_templates', function(Blueprint $table) {
+        $this->table('x_templates', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
-            $table->string('title')->comment('title');
-            $table->string('rules')->comment('rules');
             $table->timestamps();
-            $table->softDeletes();
         });
     }
 }

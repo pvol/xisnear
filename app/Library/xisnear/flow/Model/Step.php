@@ -19,5 +19,5 @@ use  Illuminate\Database\Eloquent\Model  as Eloquent;
  */
 class Step extends Eloquent
 {
-    protected $table = 'x_steps';
+    protected $table = 'x_flow_steps';
 }
