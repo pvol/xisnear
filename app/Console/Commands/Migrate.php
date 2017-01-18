@@ -13,7 +13,15 @@ namespace App\Console\Commands;
 use Xisnear\Frame\Abstracts\Command;
 
 /**
- * command
+ * migrate
+ * 
+ * usage:
+ * 
+ * 1、php artisan migrate
+ * this method will run all migrations. it will skip error migration.
+ * 
+ * 2、php artisan migrate MigrationFileName
+ * this method will run the migration file which named MigrationFileName.
  * 
  * @author xisnear <service@xisnear.com>
  */
@@ -55,6 +63,14 @@ class Migrate extends Command {
      * get migration files from directorys.
      */
     private function getMigrationPath(){
+        global $argv;
+        if(isset($argv[2])){
+            $this->files[] = [
+                'filepath' => _base_path() . '/database/migrations/', 
+                'name' => $argv[2] . '.php'
+            ];
+            return;
+        }
         foreach($this->direcory as $directory){
             $this->getMigrationPathFromDir($directory);
         }

@@ -1,31 +1,20 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
+use Xisnear\Frame\Migration;
 use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
 
-class StepTable extends Migration
-{
+class StepTable extends Migration{
+
     /**
      * Run the migrations.
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('x_steps', function (Blueprint $table) {
+    public function up() {
+        $this->table('x_steps', function(Blueprint $table) {
+            $table->create();
             $table->increments('id');
             $table->timestamps();
         });
-    }
-
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::drop('x_steps');
     }
 }

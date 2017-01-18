@@ -3,7 +3,7 @@
 use Xisnear\Frame\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class FlowTable extends Migration{
+class TestTable extends Migration{
 
     /**
      * Run the migrations.
@@ -11,7 +11,7 @@ class FlowTable extends Migration{
      * @return void
      */
     public function up() {
-        $this->table('x_flows', function(Blueprint $table) {
+        $this->table('test', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
             $table->timestamps();
