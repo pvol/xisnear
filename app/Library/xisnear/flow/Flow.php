@@ -11,11 +11,21 @@
 namespace Xisnear\Flow;
 
 /**
- * Handler base
+ * Flow start
  * 
  * @author xisnear <service@xisnear.com>
  */
-class Handler
+class Flow
 {
-
+    public function __construct() {
+        
+    }
+    
+    public function lists() {
+        
+    }
+    
+    public function detail() {
+        
+    }
 }
