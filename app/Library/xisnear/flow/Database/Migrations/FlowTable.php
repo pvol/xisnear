@@ -16,7 +16,7 @@ class FlowTable extends Migration{
             $table->increments('id');
             $table->tinyInteger('project_id')->comment('project id');
             $table->tinyInteger('config_id')->comment('flow config id');
-            $table->tinyInteger('step')->comment('current step');
+            $table->integer('step')->comment('current step');
             $table->tinyInteger('status')->comment('current status');
             $table->string('accepted_users', 255)->comment('accepted users');
             $table->string('accepted_roles', 255)->comment('accepted roles');

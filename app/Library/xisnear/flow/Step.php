@@ -17,10 +17,25 @@ namespace Xisnear\Flow;
  */
 class Step
 {
+    /** @var type jumpto = current+plus */
+    const TYPE_PLUS = 1;
+    /** @var type jumpto = number */
+    const TYPE_NUMBER = 2;
+    
     /**
-     * step to
+     * step to other step
      */
-    public function stepTo($flow_id, $number, $type) {
+    public function jump($flow_id, $number, $type = self::TYPE_PLUS) {
+        $flow = Model\Flow::find($flow_id);
+        $flow->step = $this->get_jumpto_step($flow->step, $number, $type);
+        $flow->accepted_users = '';
+        $flow->save();
+    }
+    
+    /**
+     * calculate jumpto step
+     */
+    private function get_jumpto_step($current, $number, $type){
         
     }
 }

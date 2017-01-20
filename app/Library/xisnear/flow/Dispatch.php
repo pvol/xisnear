@@ -38,13 +38,23 @@ class Dispatch
      * new dispatcher
      */
     public function __construct($handlers = [self::HANDLER_HAND_DISPATCH, self::HANDLER_HISTORY_DISPATCH]) {
-        $this->handlers = $handlers;
+        $handler_instances = [];
+        foreach($handlers as $handler){
+            $handler_instances[] = new $handler();
+        }
+        $this->handlers = $handler_instances;
     }
     
     /**
      * dispatch the step
+     * 
+     * @param array ext [user_id]
      */
-    public function dispatch($flow_id, $user_id=null) {
-        
+    public function dispatch($flow_id, $ext = []) {
+        foreach($this->handlers as $handler){
+            if($handler->handle($flow_id, $ext) !== true){
+                break;
+            }
+        }
     }
 }

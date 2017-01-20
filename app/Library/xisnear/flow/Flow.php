@@ -17,6 +17,9 @@ namespace Xisnear\Flow;
  */
 class Flow
 {
+    /** @VAR default step when flow create */
+    const DEFAULT_START_STEP = 2;
+    
     /**
      * get the flow list
      */
@@ -40,29 +43,38 @@ class Flow
     /**
      * create a new flow
      */
-    public function create($params) {
-        if(isset($params['id'])){
-            $flow = Model\Flow::find($params['id']);
-            if(!$flow){
-                throw new Exception\FlowException('not find flow by id');
-            }
-        } else {
-            $flow = new Model\Flow();
+    public function create(int $project_id,int $config_id,int $start_step = self::DEFAULT_START_STEP ,int $status = Model\Flow::STATUS_DISPATCHING) {
+        $flow = new Model\Flow();
+
+        if(empty($project_id)){
+            throw new Exception\FlowException('create flow without project id');
         }
-        if(isset($params['project_id'])){
-            $flow->project_id = $params['project_id'];
+        $project = Model\Project::find($project_id);
+        if(!$project){
+            throw new Exception\FlowException('create flow with error project id');
         }
-        if(isset($params['config_id'])){
-            $flow->config_id = $params['config_id'];
+        
+        if(empty($config_id)){
+            throw new Exception\FlowException('create flow without config id');
         }
-        if(isset($params['step'])){
-            $flow->step = $params['step'];
+        $config = Model\FlowConfig::find($config_id);
+        if(!$config){
+            throw new Exception\FlowException('create flow with error config id');
         }
-        if(isset($params['status'])){
-            $flow->status = $params['status'];
-        } else {
-            $flow->status = Model\Flow::STATUS_DISPATCHING;
+        
+        if(!is_numeric($start_step)){
+            throw new Exception\FlowException('create flow with error start step');
         }
+        
+        if(!is_numeric($status)){
+            throw new Exception\FlowException('create flow with error status');
+        }
+        
+        $flow->project_id = $project_id;
+        $flow->config_id = $config_id;
+        $flow->step = $start_step;
+        $flow->status = $status;
+        
         $flow->save();
     }
 }

@@ -10,12 +10,17 @@
 
 namespace Xisnear\Flow\Dispatcher;
 
+use Xisnear\Flow\Abstracts\Dispatch;
+
 /**
  * Dispatcher
  * 
  * @author xisnear <service@xisnear.com>
  */
-class AutoDispatch
+class AutoDispatch extends Dispatch
 {
-    
+    public function handle($flow_id, $ext) {
+        
+    }
+
 }
