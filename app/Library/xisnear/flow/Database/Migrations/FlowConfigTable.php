@@ -3,7 +3,7 @@
 use Xisnear\Frame\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class ConfigTable extends Migration{
+class FlowConfigTable extends Migration{
 
     /**
      * Run the migrations.
