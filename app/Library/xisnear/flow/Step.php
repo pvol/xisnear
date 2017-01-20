@@ -11,11 +11,16 @@
 namespace Xisnear\Flow;
 
 /**
- * Dispatcher
+ * step
  * 
  * @author xisnear <service@xisnear.com>
  */
-class UrgentDispatch
+class Step
 {
-    
+    /**
+     * step to
+     */
+    public function stepTo($flow_id, $number, $type) {
+        
+    }
 }

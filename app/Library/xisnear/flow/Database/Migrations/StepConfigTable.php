@@ -14,9 +14,11 @@ class StepConfigTable extends Migration{
         $this->table('x_flow_step_configs', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
+            $table->string('config_id')->comment('flow config id');
             $table->string('title')->comment('title');
             $table->tinyInteger('dispatch')->comment('dispatch type');
             $table->string('template')->comment('template');
+            $table->smallInteger('sortby')->comment('sort by');
             $table->timestamps();
             $table->softDeletes();
         });

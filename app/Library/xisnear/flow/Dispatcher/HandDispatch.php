@@ -8,7 +8,7 @@
  * @author xisnear <service@xisnear.com>
  */
 
-namespace Xisnear\Flow;
+namespace Xisnear\Flow\Dispatcher;
 
 /**
  * Dispatcher
