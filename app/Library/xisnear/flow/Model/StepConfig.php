@@ -13,11 +13,11 @@ namespace Xisnear\Flow;
 use  Illuminate\Database\Eloquent\Model  as Eloquent; 
 
 /**
- * Flow template
+ * StepConfig
  * 
  * @author xisnear <service@xisnear.com>
  */
-class Template extends Eloquent
+class StepConfig extends Eloquent
 {
-    protected $table = 'x_flow_templates';
+    protected $table = 'x_flow_step_configs';
 }

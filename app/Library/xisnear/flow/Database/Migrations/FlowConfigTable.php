@@ -3,7 +3,7 @@
 use Xisnear\Frame\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class StepTable extends Migration{
+class ConfigTable extends Migration{
 
     /**
      * Run the migrations.
@@ -11,12 +11,10 @@ class StepTable extends Migration{
      * @return void
      */
     public function up() {
-        $this->table('x_flow_steps', function(Blueprint $table) {
+        $this->table('x_flow_configs', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
-            $table->tinyInteger('flow_id')->comment('flow id');
-            $table->string('note')->comment('note');
-            $table->integer('created_user')->comment('created user');
+            $table->string('title')->comment('title');
             $table->timestamps();
             $table->softDeletes();
         });
