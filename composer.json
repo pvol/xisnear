@@ -4,9 +4,7 @@
         "php": ">=5.5.9",
         "vlucas/phpdotenv": "~1.0",
         "illuminate/database":"5.1.*",
-        "monolog/monolog": "1.*",
-        "Pvol/FlowMatrix": "@stable",
-        "twbs/bootstrap" : "3.*"
+        "monolog/monolog": "1.*"
     },
     "require-dev": {
         "filp/whoops": "*"
@@ -17,7 +15,7 @@
             "Xisnear\\Frame\\": "app/Library/xisnear/frame/",
             "Xisnear\\Flow\\": "app/Library/xisnear/flow/",
             "Xisnear\\Rule\\": "app/Library/xisnear/rule/",
-            "Xisnear\\Openapi\\": "app/Library/xisnear/openapi/"
+            "Xisnear\\Template\\": "app/Library/xisnear/template/"
         },
         "files": [
             "app/helpers.php"
