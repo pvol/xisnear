@@ -21,14 +21,14 @@ class FlowController extends Controller {
      * flow list page
      */
     public function lists() {
-        
+        echo __METHOD__;
     }
 
     /**
      * flow detail page
      */
     public function detail() {
-        
+        echo __METHOD__;
     }
 
 }

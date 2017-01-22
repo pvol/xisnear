@@ -35,6 +35,12 @@ class Route{
     /** @var request queue */
     public $queue = [];
     
+    /** @var middleware instance */
+    public $middleware;
+    
+    /** @var middlewares that will be used in route */
+    public $middlewares = [];
+    
     /** @var request method get */
     const METHOD_GET = 'GET';
     
@@ -57,7 +63,7 @@ class Route{
     /**
      * dispatch to controller
      */
-    public function dispatch($type = self::DISPATCH_BY_ROUTE_CONFIG){
+    protected function dispatch($type = self::DISPATCH_BY_ROUTE_CONFIG){
         switch($type){
             case self::DISPATCH_BY_ROUTE_CONFIG:
                 return $this->dispatchByRouteConfig();
@@ -73,7 +79,7 @@ class Route{
     /**
      * dispatch to controller by route config 
      */
-    public function dispatchByRouteConfig(){
+    protected function dispatchByRouteConfig(){
         foreach ($this->queue[$this->method] as $alias => $paths) {
             if (!\App\Library\Str::startsWith($this->uri, $alias)) {
                 continue;
@@ -103,7 +109,7 @@ class Route{
     /**
      * dispatch to controller by common practice
      */
-    public function dispatchByCommonPractice(){
+    protected function dispatchByCommonPractice(){
         global $argv;
         $this->uri = $argv[1];
         $this->uniq = uniqid();
@@ -125,53 +131,67 @@ class Route{
     /**
      * add new route
      */
-    public function addRoute($method, $alias, $path){
+    protected function addRoute($method, $alias, $path){
         $paths = explode('@', $path);
-        $middleware = Middleware::singleton()->middlewares;
-        switch($method){
-            case self::METHOD_GET:
-                $this->queue[$method][$alias] = ["path" => $paths, 'middleware' => $middleware];
-                break;
-            case self::METHOD_POST:
-                $this->queue[$method][$alias] = ["path" => $paths, 'middleware' => $middleware];
-                break;
-            default :
-                $this->queue[self::METHOD_GET][$alias] = ["path" => $paths, 'middleware' => $middleware];
-                $this->queue[self::METHOD_POST][$alias] = ["path" => $paths, 'middleware' => $middleware];
-                break;
-        } 
+        if($method === 'any'){
+            $this->queue[self::METHOD_GET][$alias] = ["path" => $paths, 'middleware' => $this->middlewares];
+            $this->queue[self::METHOD_POST][$alias] = ["path" => $paths, 'middleware' => $this->middlewares];
+        } else {
+            $this->queue[$method][$alias] = ["path" => $paths, 'middleware' => $this->middlewares];
+        }
     }
     
     /**
      * add route group
      */
-    public static function group($config, $callback){
+    protected function group($config, $callback){
         if(isset($config['middleware'])){
-            Middleware::singleton()->middlewares = $config['middleware'];
-            call_user_func($callback);
-            Middleware::singleton()->middlewares = [];
+            $this->middlewares = $config['middleware'];
+            $callback($this);
+            $this->middlewares = []; // clear
         }
     }
     
     /**
      * routes function, add get method route rule
      */
-    public static function get($alias, $path){
-        Route::singleton()->addRoute(self::METHOD_GET, $alias, $path);
+    protected function get($alias, $path){
+        $this->addRoute(self::METHOD_GET, $alias, $path);
     }
     
     /**
      * routes function, add post method route rule
      */
-    public static function post($alias, $path){
-        Route::singleton()->addRoute(self::METHOD_POST, $alias, $path);
+    protected function post($alias, $path){
+        $this->addRoute(self::METHOD_POST, $alias, $path);
     }
     
     /**
      * routes function, add both get and post method route rule
      */
-    public static function any($alias, $path){
-        Route::singleton()->addRoute('any', $alias, $path);
+    protected function any($alias, $path){
+        $this->addRoute('any', $alias, $path);
+    }
+    
+    /**
+     * use group、get etc. as static function
+     */
+    public static function __callStatic($method, $parameters) {
+        if(!in_array($method, ['dispatch', 'group', 'get', 'post', 'any'])){
+            throw new FrameException("Class Route static function $method not found.");
+        }
+        $instance = static::singleton();
+        return call_user_func_array([$instance, $method], $parameters);
+    }
+    
+    /**
+     * use group、get etc. as instance function
+     */
+    public function __call($method, $parameters) {
+        if(!in_array($method, ['dispatch', 'group', 'get', 'post', 'any'])){
+            throw new FrameException("Class Route instance function $method not found.");
+        }
+        return call_user_func_array([$this, $method], $parameters);
     }
     
 }
