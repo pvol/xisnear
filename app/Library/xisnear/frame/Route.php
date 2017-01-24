@@ -174,10 +174,33 @@ class Route{
     }
     
     /**
+     * routes function, add function start with get and post to route rule
+     */
+    protected function controller($alias, $path){
+        $class_methods = get_class_methods($path);
+        foreach($class_methods as $class_method){
+            if(\App\Library\Str::startsWith($class_method, strtolower(self::METHOD_GET))){
+                $this->addRoute(
+                        self::METHOD_GET, 
+                        $alias . '/' . strtolower(substr($class_method, strlen(self::METHOD_GET))), 
+                        $path . '@' . $class_method
+                );
+            }
+            if(\App\Library\Str::startsWith($class_method, strtolower(self::METHOD_POST))){
+                $this->addRoute(
+                        self::METHOD_POST, 
+                        $alias . '/' . strtolower(substr($class_method, strlen(self::METHOD_POST))), 
+                        $path . '@' . $class_method
+                );
+            }
+        }
+    }
+    
+    /**
      * use group、get etc. as static function
      */
     public static function __callStatic($method, $parameters) {
-        if(!in_array($method, ['dispatch', 'group', 'get', 'post', 'any'])){
+        if(!in_array($method, ['dispatch', 'group', 'get', 'post', 'any', 'controller'])){
             throw new FrameException("Class Route static function $method not found.");
         }
         $instance = static::singleton();
@@ -188,7 +211,7 @@ class Route{
      * use group、get etc. as instance function
      */
     public function __call($method, $parameters) {
-        if(!in_array($method, ['dispatch', 'group', 'get', 'post', 'any'])){
+        if(!in_array($method, ['dispatch', 'group', 'get', 'post', 'any', 'controller'])){
             throw new FrameException("Class Route instance function $method not found.");
         }
         return call_user_func_array([$this, $method], $parameters);

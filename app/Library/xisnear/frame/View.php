@@ -29,6 +29,6 @@ class View{
         
         header("Content-type:text/html;charset=utf-8");
         
-        require _base_path() . '/resources/views/' . $tpl . '.php';
+        require _base_path() . '/resources/views/' . $tpl . '.phtml';
     }
 }

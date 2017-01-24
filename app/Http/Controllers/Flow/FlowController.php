@@ -8,7 +8,9 @@
  * @author xisnear <service@xisnear.com>
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Flow;
+
+use App\Http\Controllers\Controller;
 
 /**
  * class flow controller
@@ -20,14 +22,14 @@ class FlowController extends Controller {
     /**
      * flow list page
      */
-    public function lists() {
+    public function getLists() {
         echo __METHOD__;
     }
 
     /**
      * flow detail page
      */
-    public function detail() {
+    public function getDetail() {
         echo __METHOD__;
     }
 

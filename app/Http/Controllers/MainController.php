@@ -10,14 +10,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+
 /**
- * class test controller
+ * main controller, home page
  * 
  * @author xisnear <service@xisnear.com>
  */
-class TestController extends Controller
+class MainController extends Controller
 {
-    public function test(){
+    public function getIndex(){
         
     }
     

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://unpkg.com/vue@2.1.10/dist/vue.js"></script>
+    </head>
+    <body>
+        
+        <script>
+            var data = {a:1};
+            var vm = new Vue({
+                data: data,
+                test: '#test'
+            });
+            
+            vm.div = 'test2';
+            
+            vm.$watch('a', function(newVal,oldVal){
+//                alert(vm.aa);
+            });
+            
+            vm.a = 2;
+        </script>
+        <div v-html="html">{{test}}</div>
+    </body>
+</html>

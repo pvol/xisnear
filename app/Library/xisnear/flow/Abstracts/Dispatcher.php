@@ -15,7 +15,7 @@ namespace Xisnear\Flow\Abstracts;
  * 
  * @author xisnear <service@xisnear.com>
  */
-abstract class Dispatch
+abstract class Dispatcher
 {
     public abstract function handle($flow_id, $ext);
 }

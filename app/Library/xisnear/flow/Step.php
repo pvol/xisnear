@@ -36,6 +36,6 @@ class Step
      * calculate jumpto step
      */
     private function get_jumpto_step($current, $number, $type){
-        
+        return 1;
     }
 }
