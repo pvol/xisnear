@@ -80,6 +80,7 @@ class Route{
      * dispatch to controller by route config 
      */
     protected function dispatchByRouteConfig(){
+        krsort($this->queue[$this->method]);
         foreach ($this->queue[$this->method] as $alias => $paths) {
             if (!\App\Library\Str::startsWith($this->uri, $alias)) {
                 continue;

@@ -20,13 +20,6 @@ use App\Http\Controllers\Controller;
 class MainController extends Controller
 {
     public function getIndex(){
-        
-    }
-    
-    public function ruleTest(){
-        $user = \App\Models\User::find(1);
-        $user->useRule();
-        $rule = \Xisnear\Rule\Rule::singleton();
-        $rule->enforce('rule1');
+        _view('home/index', $data);
     }
 }

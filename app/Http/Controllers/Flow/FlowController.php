@@ -18,6 +18,13 @@ use App\Http\Controllers\Controller;
  * @author xisnear <service@xisnear.com>
  */
 class FlowController extends Controller {
+    
+    /**
+     * flow index
+     */
+    public function getIndex() {
+        _view('flow/index', $data);
+    }
 
     /**
      * flow list page
