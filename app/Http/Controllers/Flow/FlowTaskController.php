@@ -13,11 +13,11 @@ namespace App\Http\Controllers\Flow;
 use App\Http\Controllers\Controller;
 
 /**
- * class flow controller
+ * class flow task controller
  * 
  * @author xisnear <service@xisnear.com>
  */
-class FlowController extends Controller {
+class FlowTaskController extends Controller {
     
     /**
      * flow index
@@ -30,14 +30,14 @@ class FlowController extends Controller {
      * flow list page
      */
     public function getLists() {
-        echo __METHOD__;
+        _view('flow/task/lists', $data);
     }
 
     /**
      * flow detail page
      */
     public function getDetail() {
-        echo __METHOD__;
+        _view('flow/task/detail', $data);
     }
 
 }

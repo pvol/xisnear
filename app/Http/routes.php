@@ -25,6 +25,6 @@ Route::group([
     $route->controller('/main', 'App\Http\Controllers\MainController');
     
     /** @page flow */
-    $route->controller('/flow', 'App\Http\Controllers\Flow\FlowController');
+    $route->controller('/flow', 'App\Http\Controllers\Flow\FlowTaskController');
     $route->controller('/flowconfig', 'App\Http\Controllers\Flow\FlowConfigController');
 });
