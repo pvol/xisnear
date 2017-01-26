@@ -3,7 +3,7 @@
 use Xisnear\Frame\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class TestTable extends Migration{
+class RoleUserTable extends Migration{
 
     /**
      * Run the migrations.
@@ -11,9 +11,11 @@ class TestTable extends Migration{
      * @return void
      */
     public function up() {
-        $this->table('test', function(Blueprint $table) {
+        $this->table('x_user_roles', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
+            $table->integer('user_id');
+            $table->integer('role_id');
             $table->timestamps();
         });
     }
