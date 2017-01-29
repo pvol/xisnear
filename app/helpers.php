@@ -120,7 +120,29 @@ if(! function_exists('_core_path')){
  */
 if(! function_exists('_storage_path')){
     function _storage_path(){
-        return __DIR__ . '/../storage';
+        return __DIR__ . '/../storage/';
+    }
+}
+
+/**
+ * get view path
+ * 
+ * usage: _view_path()
+ */
+if(! function_exists('_view_path')){
+    function _view_path(){
+        return __DIR__ . '/../resources/views/';
+    }
+}
+
+/**
+ * include view template
+ * 
+ * usage: _include()
+ */
+if(! function_exists('_include')){
+    function _include($template){
+        require _view_path() . $template . '.php';
     }
 }
 
