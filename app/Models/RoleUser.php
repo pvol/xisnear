@@ -13,11 +13,11 @@ namespace App\Models;
 use  Illuminate\Database\Eloquent\Model  as Eloquent; 
 
 /**
- * class test controller
+ * model
  * 
  * @author xisnear <service@xisnear.com>
  */
-class Test extends  Eloquent  
+class Role extends  Eloquent  
 {
-    protected $table = 'test';
+    protected $table = 'x_user_roles';
 }

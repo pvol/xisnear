@@ -17,7 +17,7 @@ use  Illuminate\Database\Eloquent\Model  as Eloquent;
  * 
  * @author xisnear <service@xisnear.com>
  */
-class User extends  Eloquent  
+class Role extends  Eloquent  
 {
-    protected $table = 'x_users';
+    protected $table = 'x_roles';
 }
