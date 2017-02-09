@@ -14,13 +14,12 @@ class FlowTable extends Migration{
         $this->table('x_flows', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
-            $table->tinyInteger('project_id')->comment('project id');
-            $table->tinyInteger('config_id')->comment('flow config id');
-            $table->integer('step')->comment('current step');
-            $table->tinyInteger('status')->comment('current status');
-            $table->string('accepted_users', 255)->comment('accepted users');
-            $table->string('accepted_roles', 255)->comment('accepted roles');
-            $table->integer('created_user')->comment('created user');
+            $table->integer('project_id')->comment('项目id');
+            $table->integer('step')->comment('步骤id');
+            $table->tinyInteger('status')->comment('当前状态');
+            $table->string('accepted_users', 255)->comment('接收人');
+            $table->string('accepted_roles', 255)->comment('接收角色');
+            $table->integer('created_user')->comment('创建人');
             $table->timestamps();
             $table->softDeletes();
         });

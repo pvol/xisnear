@@ -21,8 +21,8 @@ Route::group([
     'middleware' => ['before_mid', 'after_mid']], function ($route){
     
     /** @page home */
-    $route->get('/', 'App\Http\Controllers\MainController@getIndex');
-    $route->controller('/main', 'App\Http\Controllers\MainController');
+//    $route->get('/', 'App\Http\Controllers\MainController@getIndex');
+//    $route->controller('/main', 'App\Http\Controllers\MainController');
     
     /** @page flow */
     $route->controller('/flow', 'App\Http\Controllers\Flow\FlowTaskController');

@@ -21,7 +21,7 @@ class Error
     const TYPE_404 = '404';
     
     public function report($type) {
-        view('404');
+        _view('404');
     }
 
 }

@@ -141,7 +141,7 @@ if(! function_exists('_view_path')){
  * usage: _include()
  */
 if(! function_exists('_include')){
-    function _include($template){
+    function _include($template, $data=[]){
         require _view_path() . $template . '.php';
     }
 }
@@ -167,6 +167,10 @@ if (! function_exists('_abort')) {
 if (! function_exists('_config')) {
     function _config($param)
     {
+        $file_path = __DIR__ . '/../config/' . str_replace('.', '/', $param) . '.php';
+        if(file_exists($file_path)){
+            return require $file_path;
+        }
         $file_path = "";
         $get_file = false;
         $config_path = "";
@@ -186,7 +190,7 @@ if (! function_exists('_config')) {
             }
         }
         if($get_file){
-            $configs = require _base_path() . '/config/' . $file_path . '.php';
+            $configs = require __DIR__ . '/../config/' . $file_path . '.php';
             return \App\Library\Arr::get($configs, $config_path);
         }
         return null;

@@ -33,13 +33,13 @@ class App{
     
     public function run(){
         if(!$this->route->dispatch(Route::DISPATCH_BY_ROUTE_CONFIG)){
-            abort();
+            _abort();
         }    
     }
     
     public function exec(){
         if(!$this->route->dispatch(Route::DISPATCH_BY_COMMON_PRACTICE)){
-            abort();
+            _abort();
         }    
     }
 }

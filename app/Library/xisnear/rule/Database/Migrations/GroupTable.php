@@ -15,6 +15,7 @@ class GroupTable extends Migration{
             $table->create();
             $table->increments('id');
             $table->string('rules', 255);
+            $table->string('handler', 255);
             $table->timestamps();
             $table->softDeletes();
         });

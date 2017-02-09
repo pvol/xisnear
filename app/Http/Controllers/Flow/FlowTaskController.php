@@ -12,6 +12,9 @@ namespace App\Http\Controllers\Flow;
 
 use App\Http\Controllers\Controller;
 use App\Modules\FlowTask;
+use Xisnear\Flow\Model\ProjectConfig;
+use Xisnear\Flow\Model\Project;
+use Exception;
 
 /**
  * class flow task controller
@@ -36,7 +39,6 @@ class FlowTaskController extends Controller {
     public function getLists() {
         $flow_task = new FlowTask();
         $data['lists'] = $flow_task->getLists();
-        dd($data);
         _view('flow/task/lists', $data);
     }
 
@@ -47,4 +49,16 @@ class FlowTaskController extends Controller {
         _view('flow/task/detail', $data);
     }
 
+    /**
+     * flow detail page
+     */
+    public function getCreate() {
+        $project_id = $_GET['project_id'];
+        $project = Project::find($project_id);
+        if(!$project){
+            throw new Exception('project id error.');
+        }
+        $data['config'] = ProjectConfig::where('project_id', $project_id)->orderBy('sortby', 'asc')->first();
+        _view('flow/task/create', $data);
+    }
 }

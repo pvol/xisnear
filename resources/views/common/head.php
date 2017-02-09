@@ -11,14 +11,8 @@
     <!-- Bootstrap Core CSS -->
     <link href="/statics/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- MetisMenu CSS -->
-    <link href="/statics/css/metisMenu.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="/statics/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="/statics/css/morris.min.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="/statics/css/font-awesome.min.css" rel="stylesheet" type="text/css">
