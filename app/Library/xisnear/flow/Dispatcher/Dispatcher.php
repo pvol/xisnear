@@ -8,7 +8,7 @@
  * @author xisnear <service@xisnear.com>
  */
 
-namespace Xisnear\Flow\Abstracts;
+namespace Xisnear\Flow\Dispatcher;
 
 /**
  * interface command

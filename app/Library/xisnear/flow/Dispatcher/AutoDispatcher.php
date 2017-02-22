@@ -10,8 +10,6 @@
 
 namespace Xisnear\Flow\Dispatcher;
 
-use Xisnear\Flow\Abstracts\Dispatcher;
-
 /**
  * Dispatcher
  * 

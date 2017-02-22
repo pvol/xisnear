@@ -18,31 +18,24 @@ namespace Xisnear\Flow;
 class Dispatch
 {
     /** @var hand dispatch handler */
-    const HANDLER_HAND_DISPATCH = 1;
-    /** @var history dispatch handler */
-    const HANDLER_HISTORY_DISPATCH = 2;
+    const HANDLER_HAND = 1;
     /** @var auto dispatch handler */
-    const HANDLER_AUTO_DISPATCH = 3;
+    const HANDLER_AUTO = 2;
     
     /** @dict handler class map */
     public static $handler_class = [
-        self::HANDLER_HAND_DISPATCH => "Xisnear\Flow\Dispatcher\HandDispatch",
-        self::HANDLER_HISTORY_DISPATCH => "Xisnear\Flow\Dispatcher\HistoryDispatch",
-        self::HANDLER_AUTO_DISPATCH => "Xisnear\Flow\Dispatcher\AutoDispatch",
+        self::HANDLER_HAND => "Xisnear\Flow\Dispatcher\HandDispatcher",
+        self::HANDLER_AUTO => "Xisnear\Flow\Dispatcher\AutoDispatcher",
     ];
     
-    /** @var handlers for dispatch, it will be used one by one. */
-    protected $handlers;
+    /** @var handler for dispatch. */
+    protected $handler;
     
     /**
-     * new dispatcher
+     * new handler
      */
-    public function __construct($handlers = [self::HANDLER_HAND_DISPATCH, self::HANDLER_HISTORY_DISPATCH]) {
-        $handler_instances = [];
-        foreach($handlers as $handler){
-            $handler_instances[] = new $handler();
-        }
-        $this->handlers = $handler_instances;
+    public function __construct($handler = self::HANDLER_AUTO) {
+        $this->handler = new $handler();
     }
     
     /**
@@ -51,10 +44,6 @@ class Dispatch
      * @param array ext [user_id]
      */
     public function dispatch($flow_id, $ext = []) {
-        foreach($this->handlers as $handler){
-            if($handler->handle($flow_id, $ext) !== true){
-                break;
-            }
-        }
+        return $handler->handle($flow_id, $ext);
     }
 }
