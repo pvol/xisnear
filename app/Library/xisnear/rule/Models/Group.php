@@ -4,20 +4,20 @@
  * xisnear
  * 
  * @version 1.0
- * @package Flow
+ * @package Rule
  * @author xisnear <service@xisnear.com>
  */
 
-namespace Xisnear\Flow\Model;
+namespace Xisnear\Rule\Models;
 
 use  Illuminate\Database\Eloquent\Model  as Eloquent; 
 
 /**
- * model
+ * Rule Group
  * 
  * @author xisnear <service@xisnear.com>
  */
-class ProjectConfig extends Eloquent
+class Group extends Eloquent
 {
-    protected $table = 'x_flow_project_configs';
+    protected $table = 'x_rule_groups';
 }

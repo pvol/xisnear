@@ -1,23 +1,23 @@
-<?php 
+<?php
 
 /**
  * xisnear
  * 
  * @version 1.0
- * @package Flow
+ * @package App\Http\Controllers
  * @author xisnear <service@xisnear.com>
  */
 
-namespace Xisnear\Flow;
+namespace Xisnear\Auth\Models;
 
 use  Illuminate\Database\Eloquent\Model  as Eloquent; 
 
 /**
- * Flow
+ * model
  * 
  * @author xisnear <service@xisnear.com>
  */
-class Rule extends Eloquent
+class Role extends  Eloquent  
 {
-    protected $table = 'x_rules';
+    protected $table = 'x_roles';
 }

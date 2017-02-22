@@ -42,6 +42,8 @@ class Migrate extends Command {
             _core_path() . '/flow/Database/Migrations/',
             _core_path() . '/frame/Database/Migrations/',
             _core_path() . '/rule/Database/Migrations/',
+            _core_path() . '/template/Database/Migrations/',
+            _core_path() . '/auth/Database/Migrations/',
         ];
     }
 

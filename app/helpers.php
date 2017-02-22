@@ -218,3 +218,14 @@ if(! function_exists('_view')){
         return _app()->view->render($tpl, $data);
     }
 }
+
+/**
+ * render the template by config
+ * 
+ * usage: _view('test', [])
+ */
+if(! function_exists('_template')){
+    function _template($name){
+        \Xisnear\Template\Template::singleton()->render($name);
+    }
+}

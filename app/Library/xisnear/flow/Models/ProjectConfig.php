@@ -8,16 +8,16 @@
  * @author xisnear <service@xisnear.com>
  */
 
-namespace Xisnear\Flow;
+namespace Xisnear\Flow\Models;
 
 use  Illuminate\Database\Eloquent\Model  as Eloquent; 
 
 /**
- * Flow
+ * model
  * 
  * @author xisnear <service@xisnear.com>
  */
-class Template extends Eloquent
+class ProjectConfig extends Eloquent
 {
-    protected $table = 'x_templates';
+    protected $table = 'x_flow_project_configs';
 }

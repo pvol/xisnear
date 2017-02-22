@@ -20,7 +20,7 @@ class ProjectConfigTable extends Migration{
             $table->string('roles')->comment('可以执行的角色');
             $table->string('conditions')->comment('可以执行的条件');
             $table->tinyInteger('dispatch_type')->comment('派单类型');
-            $table->string('template')->comment('模板名称');
+            $table->string('template')->comment('模板');
             $table->tinyInteger('template_type')->comment('模板类型');
             $table->smallInteger('sortby')->comment('排序号');
             $table->timestamps();

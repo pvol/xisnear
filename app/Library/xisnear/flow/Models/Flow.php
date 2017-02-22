@@ -8,7 +8,7 @@
  * @author xisnear <service@xisnear.com>
  */
 
-namespace Xisnear\Flow\Model;
+namespace Xisnear\Flow\Models;
 
 use  Illuminate\Database\Eloquent\Model  as Eloquent; 
 

@@ -8,7 +8,7 @@
  * @author xisnear <service@xisnear.com>
  */
 
-namespace App\Models;
+namespace Xisnear\Auth\Models;
 
 use  Illuminate\Database\Eloquent\Model  as Eloquent; 
 
@@ -17,7 +17,7 @@ use  Illuminate\Database\Eloquent\Model  as Eloquent;
  * 
  * @author xisnear <service@xisnear.com>
  */
-class Role extends  Eloquent  
+class User extends  Eloquent  
 {
-    protected $table = 'x_user_roles';
+    protected $table = 'x_users';
 }

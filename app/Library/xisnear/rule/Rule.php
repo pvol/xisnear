@@ -23,7 +23,10 @@ class Rule
     use Factory;
     
     /** @var rule list */
-    private $rules;
+    private $rule;
+    
+    /** @var rule fact data */
+    private $data;
     
     /** @var rule compare type */
     const COMPARE_TYPE_EQUAL_TO = '=';
@@ -72,50 +75,26 @@ class Rule
     /**
      * init rule
      */
-    public function __construct($rule_path = 'rule.rules'){
-        $this->rules = _config($rule_path);
+    public function __construct($rule_id, $data = []){
+        $this->rule = Model\Rule::find($rule_id);
+        $this->data = $data;
     }
     
     /**
-     * enforce rules
+     * obey the rule
      */
-    public function enforce($rule_keys){
-        if(is_string($rule_keys)){
-            $rule_keys = explode(',', $rule_keys);
-        }
-        foreach($rule_keys as $rule_key){
-            // return false when any of the rules failed
-            if($this->enforceOne($rule_key) !== true){
-                return false;
-            }
-        }
-        return true;
-    }
-    
-    /**
-     * enforce one rule
-     */
-    public function enforceOne($rule_key){
-        $rule = $this->rules[$rule_key];
-        if(!isset($rule['fact']) || !isset($rule['compare']) || !isset($rule['expect'])){
-            throw new RuleException("rule config error:" . $rule_key);
-        }
-        
-        // new class
-        $object = call_user_func([$rule['fact'], 'singleton']);
-        
-        // get function name
-        $function_name = $rule['compare'];
-        
-        // use shorthand character
-        if(array_key_exists($rule['compare'], self::$compare_type)){
-            $function_name = self::$compare_type[$rule['compare']];
-        }
-        if($object->$function_name($rule['expect']) === true){
-            return true;
+    public function obeyTheRule(){
+        $fact_alias = _config('rule.alias');
+        if(in_array($this->rule->fact, $fact_alias)){
+            $fact = $fact_alias[$this->rule->fact];
         } else {
-            return false;
+            $fact = $this->rule->fact;
         }
+        if(!class_exists($fact)){
+            throw new RuleException("规则实现不存在");
+        }
+        $fact_obj = new $fact($this->data);
+        return $fact_obj->{$this->rule->compare}($this->rule->expect);
     }
 
 }

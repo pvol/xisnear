@@ -24,41 +24,27 @@ class Group
     use Factory;
     
     /** @var rule group list */
-    private $groups;
+    private $group;
     
     /**
      * init rule
      */
-    public function __construct($group_path = 'rule.groups'){
-        $this->groups = _config($group_path);
+    public function __construct($group_id){
+        $this->group = Model\Group::find($group_id);
     }
     
     /**
-     * enforce rules
+     * obey the rule
      */
-    public function enforce($group_keys){
-        if(is_string($group_keys)){
-            $group_keys = explode(',', $group_keys);
-        }
-        foreach($group_keys as $group_key){
-            // return false when any of the rules failed
-            if($this->enforceOne($group_key) !== true){
+    public function obeyTheRule(){
+        $rules = explode($this->group->rules, ',');
+        foreach($rules as $rule_id){
+            $rule_obj = new Rule($rule_id);
+            if(!$rule_obj->obeyTheRule()){
                 return false;
             }
         }
         return true;
-    }
-    
-    /**
-     * enforce one rule
-     */
-    public function enforceOne($group_key){
-        $rule_keys = $this->groups[$group_key];
-        if(!count($rule_keys)){
-            throw new RuleException("rule group config error:no rules");
-        }
-        $rule = new \Xisnear\Rule\Rule();
-        return $rule->enforce($rule_keys);
     }
 
 }

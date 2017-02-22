@@ -13,6 +13,7 @@
         "psr-4": {
             "App\\": "app/",
             "Xisnear\\Frame\\": "app/Library/xisnear/frame/",
+            "Xisnear\\Auth\\": "app/Library/xisnear/auth/",
             "Xisnear\\Flow\\": "app/Library/xisnear/flow/",
             "Xisnear\\Rule\\": "app/Library/xisnear/rule/",
             "Xisnear\\Template\\": "app/Library/xisnear/template/"

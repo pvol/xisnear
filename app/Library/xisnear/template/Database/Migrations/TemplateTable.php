@@ -14,6 +14,9 @@ class TemplateTable extends Migration{
         $this->table('x_templates', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
+            $table->string('name', 50)->comment('模板名称');
+            $table->string('path', 200)->comment('模板路径');
+            $table->integer('rule_group_id')->comment('规则组id');
             $table->timestamps();
         });
     }
