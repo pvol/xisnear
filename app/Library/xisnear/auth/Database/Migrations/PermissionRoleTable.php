@@ -3,7 +3,7 @@
 use Xisnear\Frame\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class RoleUserTable extends Migration{
+class PermissionRoleTable extends Migration{
 
     /**
      * Run the migrations.
@@ -11,12 +11,12 @@ class RoleUserTable extends Migration{
      * @return void
      */
     public function up() {
-        $this->table('x_auth_user_roles', function(Blueprint $table) {
+        $this->table('x_auth_permission_role', function(Blueprint $table) {
             $table->create();
-            $table->unsignedInteger('user_id')->nullable(false)->default(0);
+            $table->unsignedInteger('permission_id')->nullable(false)->default(0);
             $table->unsignedInteger('role_id')->nullable(false)->default(0);
 
-            $table->primary(['user_id', 'role_id']);
+            $table->primary(['permission_id', 'role_id']);
         });
     }
 }

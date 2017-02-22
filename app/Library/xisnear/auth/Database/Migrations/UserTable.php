@@ -11,7 +11,7 @@ class UserTable extends Migration{
      * @return void
      */
     public function up() {
-        $this->table('x_users', function(Blueprint $table) {
+        $this->table('x_auth_users', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
             $table->string('name', 100);

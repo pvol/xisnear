@@ -19,5 +19,5 @@ use  Illuminate\Database\Eloquent\Model  as Eloquent;
  */
 class User extends  Eloquent  
 {
-    protected $table = 'x_users';
+    protected $table = 'x_auth_users';
 }

@@ -11,7 +11,7 @@ class RoleTable extends Migration{
      * @return void
      */
     public function up() {
-        $this->table('x_roles', function(Blueprint $table) {
+        $this->table('x_auth_roles', function(Blueprint $table) {
             $table->create();
             $table->increments('id');
             $table->string('name', 100);
