@@ -16,6 +16,7 @@ class UserTable extends Migration{
             $table->increments('id');
             $table->string('name', 100);
             $table->string('display_name', 100);
+            $table->string('mobile', 20);
             $table->string('email', 100);
             $table->string('password', 100);
             $table->string('remember_token', 100);

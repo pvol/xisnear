@@ -4,7 +4,8 @@
         "php": ">=5.5.9",
         "vlucas/phpdotenv": "~1.0",
         "illuminate/database":"5.1.*",
-        "monolog/monolog": "1.*"
+        "monolog/monolog": "1.*",
+        "predis/predis": "~1.1"
     },
     "require-dev": {
         "filp/whoops": "*"
