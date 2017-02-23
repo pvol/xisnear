@@ -12,6 +12,7 @@ namespace Xisnear\Flow;
 
 use Xisnear\Auth\Models\User as ModelUser;
 use Xisnear\Auth\Exception\AuthException;
+use Xisnear\Frame\Traits\Factory;
 
 /**
  * Auth
@@ -25,20 +26,26 @@ use Xisnear\Auth\Exception\AuthException;
  */
 class Auth
 {
+    use Factory;
+    
     private $user;
     
     private $session;
     
-    public function __construct($session_id = null, $user = null) {
+    public function __construct($session_id = null) {
         $this->session = new \Xisnear\Auth\Session($session_id);
-        $this->user = $user;
+        self::$obj = $this;
     }
     
     /**
      * 获取登录用户信息
      */
-    public function info(){
-        return $this->session->info();
+    public function user(){
+        if(empty($this->user)){
+            $user = $this->session->info();
+            $this->user = ModelUser::find($user->id);
+        }
+        return $this->user;
     }
     
     /**

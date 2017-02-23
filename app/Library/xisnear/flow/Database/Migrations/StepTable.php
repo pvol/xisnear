@@ -15,6 +15,7 @@ class StepTable extends Migration{
             $table->create();
             $table->increments('id');
             $table->tinyInteger('flow_id')->comment('流程id');
+            $table->integer('step')->comment('步骤id');
             $table->tinyInteger('status')->comment('当前状态');
             $table->string('extdata')->comment('相关数据');
             $table->integer('created_user')->comment('创建人');

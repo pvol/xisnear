@@ -10,71 +10,81 @@
 
 namespace Xisnear\Flow;
 
+use Xisnear\Flow\Exception\FlowException;
+
 /**
- * Flow start
+ * Flow index
  * 
  * @author xisnear <service@xisnear.com>
  */
-class Flow
+class Flow extends \Xisnear\Frame\Abstracts\Base
 {
-    /** @VAR default step when flow create */
-    const DEFAULT_START_STEP = 2;
     
-    /**
-     * get the flow list
-     */
-    public function lists($status = Model\Flow::STATUS_PROCESSING) {
-        return Model\Flow::where('status', $status)->get();
+    private $data;
+    
+    public function __construct($id = null) {
+        if(is_null($id)){
+            return;
+        }
+        $this->data = Models\Flow::find($id);
+        if(!$this->data){
+            throw new FlowException("流程id有误");
+        }
+        parent::__construct();
     }
     
     /**
-     * get the flow detail
+     * create new flow
      */
-    public function info() {
-        $response = [];
-        $response['flow'] = Model\Flow::find($id);
-        if (!$response['flow']) {
-            throw new Exception\FlowException('not find flow by id');
-        }
-        $response['step'] = Model\Step::where('flow_id', $id)->get();
-        return $response;
+    public function create($project) {
+        $this->data = new Models\Flow();
+        $this->data->project_id = $project->project->id;
+        $this->data->step = $project->config->first->id;
+        $this->data->status = Models\Flow::STATUS_PROCESSING;
+        $this->data->created_user = $this->user_id;
+        $this->data->save();
     }
     
     /**
-     * create a new flow
+     * create new flow
      */
-    public function create(int $project_id,int $config_id,int $start_step = self::DEFAULT_START_STEP ,int $status = Model\Flow::STATUS_DISPATCHING) {
-        $flow = new Model\Flow();
-
-        if(empty($project_id)){
-            throw new Exception\FlowException('create flow without project id');
+    public function publish() {
+        $step = new Step($this);
+        $step->next();
+    }
+    
+    /**
+     * jump to step
+     */
+    public function jumpTo($step_id) {
+        $step = new Step($this);
+        $step->jumpTo($step_id);
+    }
+    
+    /**
+     * add a new accepted user
+     */
+    public function addAcceptedUser($user_id){
+        $accepted_users = explode(',', $this->data->accepted_user);
+        if(!is_array($accepted_users)){
+            $accepted_users = [];
         }
-        $project = Model\Project::find($project_id);
-        if(!$project){
-            throw new Exception\FlowException('create flow with error project id');
+        $accepted_users[] = $user_id;
+        $this->data->accepted_user = implode(',', array_unique($accepted_users));
+        $this->data->save();
+    }
+    
+    /**
+     * remove accepted user
+     */
+    public function removeAcceptedUser($user_id){
+        $accepted_users = explode(',', $this->data->accepted_user);
+        foreach($accepted_users as $key => $accepted_user){
+            if($user_id == $accepted_user){
+                unset($accepted_users[$key]);
+            }
         }
-        
-        if(empty($config_id)){
-            throw new Exception\FlowException('create flow without config id');
-        }
-        $config = Model\FlowConfig::find($config_id);
-        if(!$config){
-            throw new Exception\FlowException('create flow with error config id');
-        }
-        
-        if(!is_numeric($start_step)){
-            throw new Exception\FlowException('create flow with error start step');
-        }
-        
-        if(!is_numeric($status)){
-            throw new Exception\FlowException('create flow with error status');
-        }
-        
-        $flow->project_id = $project_id;
-        $flow->config_id = $config_id;
-        $flow->step = $start_step;
-        $flow->status = $status;
-        
-        $flow->save();
+        $this->data->accepted_user = implode(',', array_unique($accepted_users));
+        $this->data->save();
     }
 }

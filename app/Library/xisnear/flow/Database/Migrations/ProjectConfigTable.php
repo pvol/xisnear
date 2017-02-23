@@ -18,7 +18,7 @@ class ProjectConfigTable extends Migration{
             $table->string('title')->comment('标题');
             $table->string('actions')->comment('可以执行的动作');
             $table->string('roles')->comment('可以执行的角色');
-            $table->string('conditions')->comment('可以执行的条件');
+            $table->string('condition')->comment('可以执行的步骤');
             $table->tinyInteger('dispatch_type')->comment('派单类型');
             $table->string('template')->comment('模板');
             $table->tinyInteger('template_type')->comment('模板类型');

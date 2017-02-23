@@ -11,7 +11,6 @@
 namespace Xisnear\Rule;
 
 use Xisnear\Frame\Traits\Factory;
-use Xisnear\Rule\Exception\RuleException;
 
 /**
  * Group

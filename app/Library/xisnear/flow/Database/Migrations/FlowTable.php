@@ -18,7 +18,6 @@ class FlowTable extends Migration{
             $table->integer('step')->comment('步骤id');
             $table->tinyInteger('status')->comment('当前状态');
             $table->string('accepted_users', 255)->comment('接收人');
-            $table->string('accepted_roles', 255)->comment('接收角色');
             $table->integer('created_user')->comment('创建人');
             $table->timestamps();
             $table->softDeletes();
