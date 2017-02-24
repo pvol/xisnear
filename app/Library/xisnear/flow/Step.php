@@ -25,9 +25,11 @@ class Step extends \Xisnear\Frame\Abstracts\Base
     /** @var instance of Flow\Project */
     private $project;
     
+    public $model;
+    
     public function __construct(Flow $flow) {
         $this->flow = $flow;
-        $this->project = new Project($this->flow->project_id);
+        $this->model = Models\Step::find($flow->step);
         parent::__construct();
     }
     
@@ -44,31 +46,36 @@ class Step extends \Xisnear\Frame\Abstracts\Base
         // add operation log
         $this->stepLog();
         // modify flow
-        $this->flow->data->step = $step_id;
-        $this->flow->data->status = Models\Flow::STATUS_DISPATCHING;
-        $this->flow->data->save();
+        $this->flow->model->step = $step_id;
+        $this->flow->model->status = Models\Flow::STATUS_DISPATCHING;
+        $this->flow->model->save();
         // delete current user from accepted_user
         $this->flow->removeAcceptedUser($this->user_id);
     }
     
-    private function next($plus = 1){
-        // todo
+    public function next($plus = 1){
+        $step = Models\Step::where('project_id', $this->flow->project_id)
+                ->where('sortby', '>', $this->model->sortby)
+                ->orderBy('sortby', 'asc')
+                ->skip($plus)
+                ->first();
+        $this->jumpTo($step->id);
     }
     
-    private function previous($plus = 1){
-        // todo
+    public function previous($plus = 1){
+        $step = Models\Step::where('project_id', $this->flow->project_id)
+                ->where('sortby', '<', $this->model->sortby)
+                ->orderBy('sortby', 'desc')
+                ->skip($plus)
+                ->first();
+        $this->jumpTo($step->id);
     }
     
     /**
      * get step config
      */
     private function hasStep($step_id){
-        foreach($this->project->config as $step_config){
-            if($step_id === $step_config->id){
-                return true;
-            }
-        }
-        return false;
+        return Models\Step::where('id', $step_id)->where('project_id', $this->flow->project_id)->count();
     }
     
     /**
@@ -87,9 +94,9 @@ class Step extends \Xisnear\Frame\Abstracts\Base
      */
     private function stepLog(){
         Models\Step::create([
-            'flow_id' => $this->flow->data->id,
-            'step' => $this->flow->data->step,
-            'status' => $this->flow->data->status,
+            'flow_id' => $this->flow->model->id,
+            'step' => $this->flow->model->step,
+            'status' => $this->flow->model->status,
             'created_user' => $this->user_id,
             'created_at' => $this->now,
             'updated_at' => $this->now,

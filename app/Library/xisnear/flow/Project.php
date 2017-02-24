@@ -20,21 +20,15 @@ use Xisnear\Flow\Exception\FlowException;
 class Project extends \Xisnear\Frame\Abstracts\Base
 {
     
-    private $data;
-    
-    private $step;
+    public $model;
     
     public function __construct($id = null) {
         if(is_null($id)){
             return;
         }
-        $this->data = Models\Project::find($id);
-        if(!$this->data){
+        $this->model = Models\Project::find($id);
+        if(!$this->model){
             throw new FlowException("流程项目id有误");
-        }
-        $this->config = Model\FlowConfig::where('project_id', $id)->orderBy('sortby', 'asc')->get();
-        if(!count($$this->config)){
-            throw new Exception\FlowException('流程项目步骤配置为空');
         }
         parent::__construct();
     }
