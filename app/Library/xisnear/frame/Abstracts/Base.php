@@ -29,6 +29,7 @@ abstract class Base
     public function __construct(){
         $this->auth = \Xisnear\Flow\Auth::singleton();
         $this->user_id = $this->auth->user()->id;
+        $this->role_id = $this->auth->role()->role_id;
         $this->now = date("Y-m-d H:i:s");
     }
 }

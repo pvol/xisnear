@@ -37,11 +37,12 @@ class Step extends \Xisnear\Frame\Abstracts\Base
      * jump to other step
      */
     public function jumpTo($step_id){
+        $step = Models\Step::where('id', $step_id)->where('project_id', $this->flow->project_id)->first();
+        if(!$step){
+            throw new FlowException("目标步骤有误");
+        }
         if(!$this->hasAuth()){
             throw new FlowException("没有权限操作此流程");
-        }
-        if(!$this->hasStep($step_id)){
-            throw new FlowException("目标步骤有误");
         }
         // add operation log
         $this->stepLog();
@@ -51,6 +52,7 @@ class Step extends \Xisnear\Frame\Abstracts\Base
         $this->flow->model->save();
         // delete current user from accepted_user
         $this->flow->removeAcceptedUser($this->user_id);
+        $this->flow->addAcceptedRole($step->role);
     }
     
     public function next($plus = 1){
@@ -69,13 +71,6 @@ class Step extends \Xisnear\Frame\Abstracts\Base
                 ->skip($plus)
                 ->first();
         $this->jumpTo($step->id);
-    }
-    
-    /**
-     * get step config
-     */
-    private function hasStep($step_id){
-        return Models\Step::where('id', $step_id)->where('project_id', $this->flow->project_id)->count();
     }
     
     /**

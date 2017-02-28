@@ -32,6 +32,8 @@ class Auth
     
     private $session;
     
+    private $role;
+    
     public function __construct($session_id = null) {
         $this->session = new \Xisnear\Auth\Session($session_id);
         self::$obj = $this;
@@ -46,6 +48,20 @@ class Auth
             $this->user = ModelUser::find($user->id);
         }
         return $this->user;
+    }
+    
+    /**
+     * 获取用户组
+     */
+    public function role(){
+        return $this->role;
+    }
+    
+    /**
+     * 选择用户组
+     */
+    public function selectRole($role){
+        $this->role = $role;
     }
     
     /**
