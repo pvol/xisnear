@@ -19,12 +19,7 @@ use Xisnear\Frame\Route;
 
 Route::group([
     'middleware' => ['before_mid', 'after_mid']], function ($route){
-    
-    /** @page home */
+    /** demo */
 //    $route->get('/', 'App\Http\Controllers\MainController@getIndex');
 //    $route->controller('/main', 'App\Http\Controllers\MainController');
-    
-    /** @page flow */
-    $route->controller('/flow', 'App\Http\Controllers\Flow\FlowTaskController');
-    $route->controller('/flowconfig', 'App\Http\Controllers\Flow\FlowConfigController');
 });
