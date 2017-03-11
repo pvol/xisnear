@@ -2,7 +2,7 @@
 
 return [
     'alias' => [
-        'flow' => Xisnear\Rule\Fact\FlowFact::class,
-        'role' => Xisnear\Rule\Fact\RoleFact::class,
+        'flow' => Core\Rule\Fact\FlowFact::class,
+        'role' => Core\Rule\Fact\RoleFact::class,
     ],
 ];

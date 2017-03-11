@@ -1,25 +1,21 @@
 <?php
 
 /**
- * xisnear
+ * App
  * 
  * @version 1.0
  * @package App\Http\Controllers
- * @author xisnear <service@xisnear.com>
  */
 
 namespace App\Http\Controllers\Flow;
 
 use App\Http\Controllers\Controller;
-use App\Modules\FlowTask;
-use Xisnear\Flow\Model\ProjectConfig;
-use Xisnear\Flow\Model\Project;
+use Core\Flow\Model\ProjectConfig;
+use Core\Flow\Model\Project;
 use Exception;
 
 /**
  * class flow task controller
- * 
- * @author xisnear <service@xisnear.com>
  */
 class FlowTaskController extends Controller {
     
@@ -27,9 +23,6 @@ class FlowTaskController extends Controller {
      * flow index
      */
     public function getIndex() {
-        $flow_task = new FlowTask();
-        $data['statics'] = $flow_task->getStatics();
-        _dd($data);
         _view('flow/index', $data);
     }
 
@@ -37,8 +30,6 @@ class FlowTaskController extends Controller {
      * flow list page
      */
     public function getLists() {
-        $flow_task = new FlowTask();
-        $data['lists'] = $flow_task->getLists();
         _view('flow/task/lists', $data);
     }
 

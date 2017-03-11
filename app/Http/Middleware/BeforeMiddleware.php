@@ -1,20 +1,17 @@
 <?php 
 
 /**
- * xisnear
+ * App
  * 
  * @version 1.0
  * @package App
  * @ignore
- * @author xisnear <service@xisnear.com>
  */
 
 namespace App\Http\Middleware;
 
 /**
  * class before middleware
- * 
- * @author xisnear <service@xisnear.com>
  */
 class BeforeMiddleware {
 

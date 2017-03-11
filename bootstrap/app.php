@@ -18,21 +18,21 @@ Dotenv::load(__DIR__.'/../');
 | add whoops
 |--------------------------------------------------------------------------
 */
-Xisnear\Frame\Whoops::singleton()->init(\Xisnear\Frame\Whoops::TYPE_PAGE);
+Core\Frame\Whoops::singleton()->init(\Core\Frame\Whoops::TYPE_PAGE);
 
 /*
 |--------------------------------------------------------------------------
 | add eloquent db orm
 |--------------------------------------------------------------------------
 */
-Xisnear\Frame\Eloquent::singleton()->init();
+Core\Frame\Eloquent::singleton()->init();
 
 /*
 |--------------------------------------------------------------------------
 | add monolog
 |--------------------------------------------------------------------------
 */
-Xisnear\Frame\Log::singleton()->init();
+Core\Frame\Log::singleton()->init();
 
 /*
 |--------------------------------------------------------------------------
@@ -46,6 +46,6 @@ require_once __DIR__.'/../app/Http/routes.php';
 | get application
 |--------------------------------------------------------------------------
 */
-$app = Xisnear\Frame\App::singleton();
+$app = Core\Frame\App::singleton();
 
 return $app;

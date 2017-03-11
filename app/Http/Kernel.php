@@ -1,20 +1,17 @@
 <?php
 
 /**
- * xisnear
+ * App
  * 
  * @version 1.0
  * @package App
  * @ignore
- * @author xisnear <service@xisnear.com>
  */
 
 namespace App\Http;
 
 /**
  * class for config kernel
- * 
- * @author xisnear <service@xisnear.com>
  */
 class Kernel
 {

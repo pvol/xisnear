@@ -1,7 +1,7 @@
 <?php
 
 /**
- * App
+ * core
  * 
  * @version 1.0
  * @package App\Console
@@ -22,7 +22,7 @@ use Core\Frame\Abstracts\Command;
  * 2、php artisan migrate MigrationFileName
  * this method will run the migration file which named MigrationFileName.
  */
-class Migrate extends Command {
+class Seed extends Command {
 
     /** @var migration directory */
     protected $direcory;
@@ -35,12 +35,7 @@ class Migrate extends Command {
 
     public function __construct() {
         $this->direcory = [
-            _base_path() . '/database/migrations/',
-            _core_path() . '/flow/Database/Migrations/',
-            _core_path() . '/frame/Database/Migrations/',
-            _core_path() . '/rule/Database/Migrations/',
-            _core_path() . '/template/Database/Migrations/',
-            _core_path() . '/auth/Database/Migrations/',
+            _base_path() . '/database/seeds/',
         ];
     }
 
@@ -49,7 +44,7 @@ class Migrate extends Command {
      */
     public function handle() {
         // get file path from directory
-        $this->getMigrationPath();
+        $this->getSeedPath();
         
         // include files and get instances
         $this->includeFiles();
@@ -61,24 +56,24 @@ class Migrate extends Command {
     /**
      * get migration files from directorys.
      */
-    private function getMigrationPath(){
+    private function getSeedPath(){
         global $argv;
         if(isset($argv[2])){
             $this->files[] = [
-                'filepath' => _base_path() . '/database/migrations/', 
+                'filepath' => _base_path() . '/database/seeds/', 
                 'name' => $argv[2] . '.php'
             ];
             return;
         }
         foreach($this->direcory as $directory){
-            $this->getMigrationPathFromDir($directory);
+            $this->getSeedPathFromDir($directory);
         }
     }
     
     /**
-     * get migration files from directory.
+     * get seed files from directory.
      */
-    private function getMigrationPathFromDir($directory){
+    private function getSeedPathFromDir($directory){
         $files = scandir($directory);
         foreach($files as $file){
             if(strpos($file, '.php') !== false){
@@ -111,7 +106,7 @@ class Migrate extends Command {
      */
     private function run(){
         foreach($this->classes as $class){
-            $class->up();
+            $class->run();
         }
     }
 

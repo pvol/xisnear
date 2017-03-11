@@ -6,15 +6,12 @@
  * @version 1.0
  * @package App
  * @ignore
- * 
  */
 
 namespace App\Exceptions;
 
 /**
  * class handle exception
- * 
- * 
  */
 class ApiHandler
 {

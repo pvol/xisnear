@@ -2,7 +2,7 @@
 
 namespace App\Console;
 
-use Xisnear\Frame\Abstracts\ConsoleKernel;
+use Core\Frame\Abstracts\ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,5 +13,6 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         "migrate" => \App\Console\Commands\Migrate::class,
+        "seed" => \App\Console\Commands\Seed::class,
     ];
 }

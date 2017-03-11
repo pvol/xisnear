@@ -1,11 +1,10 @@
 <?php
 
 /**
- * xisnear
+ * App
  * 
  * @version 1.0
  * @package App\Http\Controllers
- * @author xisnear <service@xisnear.com>
  */
 
 namespace App\Http\Controllers\Flow;
@@ -14,8 +13,6 @@ use App\Http\Controllers\Controller;
 
 /**
  * flow config controller
- * 
- * @author xisnear <service@xisnear.com>
  */
 class FlowConfigController extends Controller {
 
