@@ -28,15 +28,6 @@ class RsaCrypt extends Crypt {
     }
 
     /**
-     * 测试加解密
-     */
-    public function test($data) {
-        $encrypt = $this->rsaEncrypt($data, $this->other_side->public_key, self::KEY_TYPE_PUBLIC);
-        $decrypt = $this->rsaDecrypt($encrypt, $this->other_side->private_key, self::KEY_TYPE_PRIVATE);
-        dd($data, $encrypt, $decrypt);
-    }
-
-    /**
      * 用对方公钥加密
      */
     public function encrypt($data) {
